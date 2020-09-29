@@ -1,0 +1,20 @@
+{
+    "presets": ["es2015", "stage-0"],
+    "plugins": [
+      "transform-runtime",
+      ["module-resolver", {
+        "root": [
+          "./src"
+        ],
+        "alias": {
+          "v1": "./src/routers/v1",
+          "config": "./config",
+          "utils": "./src/utils",
+          "services": "./src/services",
+          "controllers": "./src/controllers",
+          "models": "./src/models",
+          "public": "./src/public"
+        }
+      }]
+    ]
+  }
