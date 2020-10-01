@@ -31,9 +31,43 @@ export const getPrayer = (req, res) => {
 
 export const getHijriCalendar = (req, res) => {
     momentHijri.locale('id')
-    const nowDate = momentHijri().format('YYYY/MM/DD')
-    const hijri = momentHijri(nowDate, 'YYYY/MM/DD').format('dddd, iDD/iMMMM/iYYYY')
+    const hijri = momentHijri()
+
+    const startWeek = momentHijri(hijri).startOf('imonth').week();
+    const endWeek = momentHijri(hijri).endOf('imonth').week();
+    let calendar = []
+    for(var week = startWeek; week<endWeek;week++){
+      calendar.push({
+        week:week,
+        days:Array(7).fill(0).map((n, i) => momentHijri().week(week).startOf('iweek').clone().add(n + i, 'day').format('dddd, iDD/iMM/iYYYY'))
+      })
+    }
+
     return res.send({
-        hijri
+        current: hijri.format('dddd, iDD/iMMMM/iYYYY'),
+        startWeek,
+        endWeek,
+        calendar
+    })
+}
+
+
+export const getMasehiCalendar = (req, res) => {
+    momentHijri.locale('id')
+    const masehi = momentHijri()
+
+    const startWeek = momentHijri().startOf('month').week();
+    const endWeek = momentHijri().endOf('month').week();
+    let calendar = []
+    for(var week = startWeek; week<endWeek;week++){
+      calendar.push({
+        week:week,
+        days:Array(7).fill(0).map((n, i) => momentHijri().week(week).startOf('week').clone().add(n + i, 'day').format('dddd, DD/MM/YYYY'))
+      })
+    }
+
+    return res.send({
+        current: masehi.format('dddd, DD/MM/YYYY'),
+        calendar
     })
 }
