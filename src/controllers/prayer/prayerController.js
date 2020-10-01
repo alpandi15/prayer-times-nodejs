@@ -32,7 +32,7 @@ export const getPrayer = (req, res) => {
 export const getHijriCalendar = (req, res) => {
     momentHijri.locale('id')
     const nowDate = momentHijri().format('YYYY/MM/DD')
-    const hijri = momentHijri(nowDate, 'YYYY/MM/DD').format('iDD/iMMMM/iYYYY')
+    const hijri = momentHijri(nowDate, 'YYYY/MM/DD').format('dddd, iDD/iMMMM/iYYYY')
     return res.send({
         hijri
     })
