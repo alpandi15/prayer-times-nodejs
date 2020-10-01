@@ -45,8 +45,7 @@ export const getHijriCalendar = (req, res) => {
 
     return res.send({
         current: hijri.format('dddd, iDD/iMMMM/iYYYY'),
-        startWeek,
-        endWeek,
+        month: hijri.startOf("imonth").format('iMMMM'),
         calendar
     })
 }
@@ -56,8 +55,8 @@ export const getMasehiCalendar = (req, res) => {
     momentHijri.locale('id')
     const masehi = momentHijri()
 
-    const startWeek = momentHijri().startOf('month').week();
-    const endWeek = momentHijri().endOf('month').week();
+    const startWeek = momentHijri(masehi).startOf('month').week();
+    const endWeek = momentHijri(masehi).endOf('month').week();
     let calendar = []
     for(var week = startWeek; week<endWeek;week++){
       calendar.push({
@@ -68,6 +67,7 @@ export const getMasehiCalendar = (req, res) => {
 
     return res.send({
         current: masehi.format('dddd, DD/MM/YYYY'),
+        month: masehi.startOf("month").format('MMMM'),
         calendar
     })
 }
