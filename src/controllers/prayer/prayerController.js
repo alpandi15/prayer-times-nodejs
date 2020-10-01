@@ -8,6 +8,7 @@ import {
 } from 'adhan'
 import { PrayerTimes as PT } from 'prayer-times'
 import moment from 'moment'
+import momentHijri from 'moment-hijri'
 
 export const getPrayer = (req, res) => {
     var date = new Date()
@@ -28,8 +29,11 @@ export const getPrayer = (req, res) => {
     })
 }
 
-export const getPrayer2 = (req, res) => {
-    const prayTimes = new PT();
-    const data = prayTimes.getTimes(new Date(), [3.591354, 98.785335], +7, 'auto', '24h')
-    return res.send('Test')
+export const getHijriCalendar = (req, res) => {
+    momentHijri.locale('id')
+    const nowDate = momentHijri().format('YYYY/MM/DD')
+    const hijri = momentHijri(nowDate, 'YYYY/MM/DD').format('iDD/iMMMM/iYYYY')
+    return res.send({
+        hijri
+    })
 }

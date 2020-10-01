@@ -19,6 +19,7 @@
     "helmet": "^4.1.1",
     "http": "^0.0.1-security",
     "moment": "^2.29.0",
+    "moment-hijri": "^2.1.2",
     "path": "^0.12.7",
     "prayer-times": "^0.1.0"
   },

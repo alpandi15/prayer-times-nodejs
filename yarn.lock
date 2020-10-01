@@ -2692,7 +2692,14 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "^1.2.5"
 
-moment@^2.29.0:
+moment-hijri@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/moment-hijri/-/moment-hijri-2.1.2.tgz#ed95fa4f1fec45b41da132c9d4103b2726215225"
+  integrity sha512-p5ZOA1UzBHAAXiePh37XRjjwuyH78+1ShYZ7R6jogxketewG7kTCUjUmcP9c4Qsx8D8cqxwUWrESjtgdT6tNoA==
+  dependencies:
+    moment "^2.24.0"
+
+moment@^2.24.0, moment@^2.29.0:
   version "2.29.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.0.tgz#fcbef955844d91deb55438613ddcec56e86a3425"
   integrity sha512-z6IJ5HXYiuxvFTI6eiQ9dm77uE0gyy1yXNApVHqTcnIKfY9tIwEjlzsZ6u1LQXvVgKeTnv9Xm7NDvJ7lso3MtA==
